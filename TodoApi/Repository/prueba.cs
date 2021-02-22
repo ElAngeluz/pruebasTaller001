@@ -25,7 +25,7 @@ namespace TodoApi.Repository
         /// Funcion de prueba
         /// </summary>
         /// <param name="parametro">parametro de entrada</param>
-        void metodo(string parametro);
+        
         Task<ActionResult<TodoItem>> GetIdAsync(long id);
         Task<ActionResult<TodoItem>> PostAllAsync(TodoItem todoItem);
 
@@ -133,17 +133,16 @@ namespace TodoApi.Repository
             return noconten;
         }
 
-        public void metodo(string parametro)
+        public (bool Success, object Data) metodo(string parametro)
         {
             try
             {
-                Logger.LogInformation("Se realizo correctamente la operacion X");
-                Logger.LogWarning("Se realizo correctamente la operacion X");
-                Logger.LogError("Se realizo correctamente la operacion X");
+                return (true, null);
             }
             catch (TimeoutException Ex)
             {
                 Logger.LogCritical(Ex, "Error inesperado en metodo 1, cuando se hacia la operación x{parametro}", parametro);
+                return (false, null);
             }
         }
     }
