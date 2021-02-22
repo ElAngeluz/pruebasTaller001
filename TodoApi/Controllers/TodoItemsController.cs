@@ -54,6 +54,18 @@ namespace TodoApi.Controllers
 
         private bool TodoItemExists(long id)
         {
+
+            (bool Success, object Data) = Prueba.Metodo("sa");
+
+            //if (Success)
+            //{
+            //    return Ok(Data);
+            //}
+            //else
+            //{
+            //    return BadRequest(Data);
+            //}
+
             return _context.TodoItems.Any(e => e.Id == id);
         }
     }

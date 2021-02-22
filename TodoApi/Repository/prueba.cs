@@ -31,6 +31,7 @@ namespace TodoApi.Repository
 
         Task<IActionResult> DeleteAllAsync(long id);
         Task<IActionResult> PutIdAsync(long id, TodoItem todoItem);
+        (bool Success, object Data) Metodo(string parametro);
     }
     public class Prueba : IPrueba
     {
@@ -133,7 +134,7 @@ namespace TodoApi.Repository
             return noconten;
         }
 
-        public (bool Success, object Data) metodo(string parametro)
+        public (bool Success, object Data) Metodo(string parametro)
         {
             try
             {
