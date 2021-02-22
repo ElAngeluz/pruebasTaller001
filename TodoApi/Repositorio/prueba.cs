@@ -15,7 +15,7 @@
         /// funcion que consulta todas las tareas
         /// </summary>
         /// <returns></returns>
-        Task<IEnumerable<TodoItem>> GetAllAsync();
+        Task<List<TodoItem>> GetAllAsync();
 
         /// <summary>
         /// FUncion de prueba
@@ -37,7 +37,7 @@
             _context = context;
         }
 
-        public async Task<IEnumerable<TodoItem>> GetAllAsync()
+        public async Task<List<TodoItem>> GetAllAsync()
         {
             try
             {

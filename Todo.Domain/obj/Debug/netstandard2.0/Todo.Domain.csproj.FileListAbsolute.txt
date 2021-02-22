@@ -1,9 +1,0 @@
-C:\Users\USUARIO\source\repos\base\Todo.domain\bin\Debug\netstandard2.0\Todo.domain.deps.json
-C:\Users\USUARIO\source\repos\base\Todo.domain\bin\Debug\netstandard2.0\Todo.domain.dll
-C:\Users\USUARIO\source\repos\base\Todo.domain\bin\Debug\netstandard2.0\Todo.domain.pdb
-C:\Users\USUARIO\source\repos\base\Todo.domain\obj\Debug\netstandard2.0\Todo.domain.csprojAssemblyReference.cache
-C:\Users\USUARIO\source\repos\base\Todo.domain\obj\Debug\netstandard2.0\Todo.domain.AssemblyInfoInputs.cache
-C:\Users\USUARIO\source\repos\base\Todo.domain\obj\Debug\netstandard2.0\Todo.domain.AssemblyInfo.cs
-C:\Users\USUARIO\source\repos\base\Todo.domain\obj\Debug\netstandard2.0\Todo.domain.csproj.CoreCompileInputs.cache
-C:\Users\USUARIO\source\repos\base\Todo.domain\obj\Debug\netstandard2.0\Todo.domain.dll
-C:\Users\USUARIO\source\repos\base\Todo.domain\obj\Debug\netstandard2.0\Todo.domain.pdb
