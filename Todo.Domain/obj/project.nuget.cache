@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "4MuEGJf6SDcucYnGPVUh0Fc7232KYTb4gI/J1+a1zNVYcX80ir2rgOFTKwc8LnbbQh5Xk5/T3ByXb8fz2OBOcg==",
+  "dgSpecHash": "wNaAUKDdRacrRX3fISO3bEcDFCke9IMjKQ4Jti/kL5Y589QbOrvmZtlsRY1MV4Ee1+tFKjGOeVPwo/OLUXTUxA==",
   "success": true,
-  "projectFilePath": "F:\\Pedro Abel\\Downloads\\TodoApi\\Todo.Domain\\Todo.Domain.csproj",
+  "projectFilePath": "D:\\asp.net core c#\\practica\\pruebasTaller001\\Todo.Domain\\Todo.Domain.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Pedro Abel\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\Pedro Abel\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
-    "C:\\Users\\Pedro Abel\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512"
+    "C:\\Users\\USUARIO\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\USUARIO\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\USUARIO\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512"
   ],
   "logs": []
 }

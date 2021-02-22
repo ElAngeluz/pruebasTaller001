@@ -7770,24 +7770,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Pedro Abel\\.nuget\\packages\\": {},
+    "C:\\Users\\USUARIO\\.nuget\\packages\\": {},
     "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Pedro Abel\\Downloads\\TodoApi\\TodoApi\\TodoApi.csproj",
+      "projectUniqueName": "D:\\asp.net core c#\\practica\\pruebasTaller001\\TodoApi\\TodoApi.csproj",
       "projectName": "TodoApi",
-      "projectPath": "F:\\Pedro Abel\\Downloads\\TodoApi\\TodoApi\\TodoApi.csproj",
-      "packagesPath": "C:\\Users\\Pedro Abel\\.nuget\\packages\\",
-      "outputPath": "F:\\Pedro Abel\\Downloads\\TodoApi\\TodoApi\\obj\\",
+      "projectPath": "D:\\asp.net core c#\\practica\\pruebasTaller001\\TodoApi\\TodoApi.csproj",
+      "packagesPath": "C:\\Users\\USUARIO\\.nuget\\packages\\",
+      "outputPath": "D:\\asp.net core c#\\practica\\pruebasTaller001\\TodoApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Pedro Abel\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.2.config",
+        "C:\\Users\\USUARIO\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -7796,17 +7795,14 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "E:\\Program Files (x86)\\DevExpress 19.2\\Components\\System\\Components\\Packages": {},
-        "https://ansofttech.pkgs.visualstudio.com/_packaging/FuncionesAngeluz/nuget/v3/index.json": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://nuget.devexpress.com/kx7jTmdEi7mLnq4xFQlNlA3V1L4ygNYh9kRCv1TprY9qath7i9/api": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "F:\\Pedro Abel\\Downloads\\TodoApi\\Todo.Domain\\Todo.Domain.csproj": {
-              "projectPath": "F:\\Pedro Abel\\Downloads\\TodoApi\\Todo.Domain\\Todo.Domain.csproj"
+            "D:\\asp.net core c#\\practica\\pruebasTaller001\\Todo.Domain\\Todo.Domain.csproj": {
+              "projectPath": "D:\\asp.net core c#\\practica\\pruebasTaller001\\Todo.Domain\\Todo.Domain.csproj"
             }
           }
         }
@@ -7870,7 +7866,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
       }
     }
   }
