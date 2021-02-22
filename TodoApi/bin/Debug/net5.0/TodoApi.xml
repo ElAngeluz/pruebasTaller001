@@ -4,31 +4,17 @@
         <name>TodoApi</name>
     </assembly>
     <members>
-        <member name="M:TodoApi.Controllers.TodoItemsController.GetTodoItems">
+        <member name="M:TodoApi.Repository.IPrueba.GetAllAsync">
             <summary>
-            retorna todos los items activos de la base de datos
+            Funcion que consulta todas las tareas 
             </summary>
             <returns></returns>
         </member>
-        <member name="M:TodoApi.Controllers.TodoItemsController.PutTodoItem(System.Int64,Todo.Domain.Tareas.TodoItem)">
+        <member name="M:TodoApi.Repository.IPrueba.metodo(System.String)">
             <summary>
-            
+            Funcion de prueba
             </summary>
-            <param name="id">identificacdor del registro</param>
-            <param name="todoItem">entidad a modificar</param>
-            <returns></returns>
-        </member>
-        <member name="M:TodoApi.Repositorio.IPrueba.GetAllAsync">
-            <summary>
-            funcion que consulta todas las tareas
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:TodoApi.Repositorio.IPrueba.metodo(System.String)">
-            <summary>
-            FUncion de prueba
-            </summary>
-            <param name="parametro">parametros de entrada</param>
+            <param name="parametro">parametro de entrada</param>
         </member>
     </members>
 </doc>

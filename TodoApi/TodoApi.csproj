@@ -4,8 +4,10 @@
     <TargetFramework>net5.0</TargetFramework>
 	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
 	  <NoWarn>$(NoWarn);1591</NoWarn>
-	  <UserSecretsId>fe33876f-b90f-4cfd-8033-b8efc71346eb</UserSecretsId>
-	  <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,18 +18,12 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.0.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Todo.Domain\Todo.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Negocios\" />
-    <Folder Include="Servicio\" />
+    <ProjectReference Include="..\Todo.domain\Todo.domain.csproj" />
   </ItemGroup>
 
 </Project>

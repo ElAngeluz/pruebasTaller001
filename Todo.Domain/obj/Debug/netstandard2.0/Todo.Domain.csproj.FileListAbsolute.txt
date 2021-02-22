@@ -1,9 +1,9 @@
-F:\Pedro Abel\Downloads\TodoApi\Todo.Domain\bin\Debug\netstandard2.0\Todo.Domain.deps.json
-F:\Pedro Abel\Downloads\TodoApi\Todo.Domain\bin\Debug\netstandard2.0\Todo.Domain.dll
-F:\Pedro Abel\Downloads\TodoApi\Todo.Domain\bin\Debug\netstandard2.0\Todo.Domain.pdb
-F:\Pedro Abel\Downloads\TodoApi\Todo.Domain\obj\Debug\netstandard2.0\Todo.Domain.csprojAssemblyReference.cache
-F:\Pedro Abel\Downloads\TodoApi\Todo.Domain\obj\Debug\netstandard2.0\Todo.Domain.AssemblyInfoInputs.cache
-F:\Pedro Abel\Downloads\TodoApi\Todo.Domain\obj\Debug\netstandard2.0\Todo.Domain.AssemblyInfo.cs
-F:\Pedro Abel\Downloads\TodoApi\Todo.Domain\obj\Debug\netstandard2.0\Todo.Domain.csproj.CoreCompileInputs.cache
-F:\Pedro Abel\Downloads\TodoApi\Todo.Domain\obj\Debug\netstandard2.0\Todo.Domain.dll
-F:\Pedro Abel\Downloads\TodoApi\Todo.Domain\obj\Debug\netstandard2.0\Todo.Domain.pdb
+C:\Users\USUARIO\source\repos\base\Todo.domain\bin\Debug\netstandard2.0\Todo.domain.deps.json
+C:\Users\USUARIO\source\repos\base\Todo.domain\bin\Debug\netstandard2.0\Todo.domain.dll
+C:\Users\USUARIO\source\repos\base\Todo.domain\bin\Debug\netstandard2.0\Todo.domain.pdb
+C:\Users\USUARIO\source\repos\base\Todo.domain\obj\Debug\netstandard2.0\Todo.domain.csprojAssemblyReference.cache
+C:\Users\USUARIO\source\repos\base\Todo.domain\obj\Debug\netstandard2.0\Todo.domain.AssemblyInfoInputs.cache
+C:\Users\USUARIO\source\repos\base\Todo.domain\obj\Debug\netstandard2.0\Todo.domain.AssemblyInfo.cs
+C:\Users\USUARIO\source\repos\base\Todo.domain\obj\Debug\netstandard2.0\Todo.domain.csproj.CoreCompileInputs.cache
+C:\Users\USUARIO\source\repos\base\Todo.domain\obj\Debug\netstandard2.0\Todo.domain.dll
+C:\Users\USUARIO\source\repos\base\Todo.domain\obj\Debug\netstandard2.0\Todo.domain.pdb

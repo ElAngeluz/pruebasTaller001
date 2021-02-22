@@ -1,16 +1,19 @@
-﻿namespace TodoApi.Models
-{
-    using Microsoft.EntityFrameworkCore;
-    using Todo.Domain.Tareas;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Todo.domain.soloopera;
 
+namespace TodoApi.Models
+{
     public class TodoContext : DbContext
     {
         public TodoContext(DbContextOptions<TodoContext> options)
             : base(options)
         {
-            
         }
-
+       
         public DbSet<TodoItem> TodoItems { get; set; }
     }
 }

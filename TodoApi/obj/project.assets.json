@@ -776,13 +776,6 @@
           "lib/netstandard2.0/Microsoft.OpenApi.dll": {}
         }
       },
-      "Microsoft.VisualStudio.Azure.Containers.Tools.Targets/1.10.9": {
-        "type": "package",
-        "build": {
-          "build/Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props": {},
-          "build/Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets": {}
-        }
-      },
       "Microsoft.VisualStudio.Web.CodeGeneration/5.0.1": {
         "type": "package",
         "dependencies": {
@@ -2265,17 +2258,17 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Todo.Domain/1.0.0": {
+      "Todo.domain/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "System.ComponentModel.Annotations": "5.0.0"
         },
         "compile": {
-          "bin/placeholder/Todo.Domain.dll": {}
+          "bin/placeholder/Todo.domain.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Todo.Domain.dll": {}
+          "bin/placeholder/Todo.domain.dll": {}
         }
       }
     }
@@ -3439,70 +3432,6 @@
         "lib/netstandard2.0/Microsoft.OpenApi.xml",
         "microsoft.openapi.1.2.3.nupkg.sha512",
         "microsoft.openapi.nuspec"
-      ]
-    },
-    "Microsoft.VisualStudio.Azure.Containers.Tools.Targets/1.10.9": {
-      "sha512": "Sug+YeP9YYigFnUdvPCUJjBz7cc2VVR7UBZkIRwPWmVR/HmIM5HbcpX940s4BM3xgL3QHGp3qN7AqkcZ/MjZEw==",
-      "type": "package",
-      "path": "microsoft.visualstudio.azure.containers.tools.targets/1.10.9",
-      "hasTools": true,
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "EULA.md",
-        "ThirdPartyNotices.txt",
-        "build/Container.props",
-        "build/Container.targets",
-        "build/Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props",
-        "build/Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets",
-        "build/ToolsTarget.props",
-        "build/ToolsTarget.targets",
-        "microsoft.visualstudio.azure.containers.tools.targets.1.10.9.nupkg.sha512",
-        "microsoft.visualstudio.azure.containers.tools.targets.nuspec",
-        "tools/Microsoft.VisualStudio.Containers.Tools.Common.dll",
-        "tools/Microsoft.VisualStudio.Containers.Tools.Shared.dll",
-        "tools/Microsoft.VisualStudio.Containers.Tools.Tasks.dll",
-        "tools/Newtonsoft.Json.dll",
-        "tools/cs/Microsoft.VisualStudio.Containers.Tools.Common.resources.dll",
-        "tools/cs/Microsoft.VisualStudio.Containers.Tools.Shared.resources.dll",
-        "tools/cs/Microsoft.VisualStudio.Containers.Tools.Tasks.resources.dll",
-        "tools/de/Microsoft.VisualStudio.Containers.Tools.Common.resources.dll",
-        "tools/de/Microsoft.VisualStudio.Containers.Tools.Shared.resources.dll",
-        "tools/de/Microsoft.VisualStudio.Containers.Tools.Tasks.resources.dll",
-        "tools/es/Microsoft.VisualStudio.Containers.Tools.Common.resources.dll",
-        "tools/es/Microsoft.VisualStudio.Containers.Tools.Shared.resources.dll",
-        "tools/es/Microsoft.VisualStudio.Containers.Tools.Tasks.resources.dll",
-        "tools/fr/Microsoft.VisualStudio.Containers.Tools.Common.resources.dll",
-        "tools/fr/Microsoft.VisualStudio.Containers.Tools.Shared.resources.dll",
-        "tools/fr/Microsoft.VisualStudio.Containers.Tools.Tasks.resources.dll",
-        "tools/it/Microsoft.VisualStudio.Containers.Tools.Common.resources.dll",
-        "tools/it/Microsoft.VisualStudio.Containers.Tools.Shared.resources.dll",
-        "tools/it/Microsoft.VisualStudio.Containers.Tools.Tasks.resources.dll",
-        "tools/ja/Microsoft.VisualStudio.Containers.Tools.Common.resources.dll",
-        "tools/ja/Microsoft.VisualStudio.Containers.Tools.Shared.resources.dll",
-        "tools/ja/Microsoft.VisualStudio.Containers.Tools.Tasks.resources.dll",
-        "tools/ko/Microsoft.VisualStudio.Containers.Tools.Common.resources.dll",
-        "tools/ko/Microsoft.VisualStudio.Containers.Tools.Shared.resources.dll",
-        "tools/ko/Microsoft.VisualStudio.Containers.Tools.Tasks.resources.dll",
-        "tools/pl/Microsoft.VisualStudio.Containers.Tools.Common.resources.dll",
-        "tools/pl/Microsoft.VisualStudio.Containers.Tools.Shared.resources.dll",
-        "tools/pl/Microsoft.VisualStudio.Containers.Tools.Tasks.resources.dll",
-        "tools/pt-BR/Microsoft.VisualStudio.Containers.Tools.Common.resources.dll",
-        "tools/pt-BR/Microsoft.VisualStudio.Containers.Tools.Shared.resources.dll",
-        "tools/pt-BR/Microsoft.VisualStudio.Containers.Tools.Tasks.resources.dll",
-        "tools/ru/Microsoft.VisualStudio.Containers.Tools.Common.resources.dll",
-        "tools/ru/Microsoft.VisualStudio.Containers.Tools.Shared.resources.dll",
-        "tools/ru/Microsoft.VisualStudio.Containers.Tools.Tasks.resources.dll",
-        "tools/tr/Microsoft.VisualStudio.Containers.Tools.Common.resources.dll",
-        "tools/tr/Microsoft.VisualStudio.Containers.Tools.Shared.resources.dll",
-        "tools/tr/Microsoft.VisualStudio.Containers.Tools.Tasks.resources.dll",
-        "tools/utils/KillProcess.exe",
-        "tools/zh-Hans/Microsoft.VisualStudio.Containers.Tools.Common.resources.dll",
-        "tools/zh-Hans/Microsoft.VisualStudio.Containers.Tools.Shared.resources.dll",
-        "tools/zh-Hans/Microsoft.VisualStudio.Containers.Tools.Tasks.resources.dll",
-        "tools/zh-Hant/Microsoft.VisualStudio.Containers.Tools.Common.resources.dll",
-        "tools/zh-Hant/Microsoft.VisualStudio.Containers.Tools.Shared.resources.dll",
-        "tools/zh-Hant/Microsoft.VisualStudio.Containers.Tools.Tasks.resources.dll"
       ]
     },
     "Microsoft.VisualStudio.Web.CodeGeneration/5.0.1": {
@@ -7751,10 +7680,10 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
-    "Todo.Domain/1.0.0": {
+    "Todo.domain/1.0.0": {
       "type": "project",
-      "path": "../Todo.Domain/Todo.Domain.csproj",
-      "msbuildProject": "../Todo.Domain/Todo.Domain.csproj"
+      "path": "../Todo.domain/Todo.domain.csproj",
+      "msbuildProject": "../Todo.domain/Todo.domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -7763,31 +7692,29 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.2",
       "Microsoft.EntityFrameworkCore.Sqlite >= 5.0.2",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.2",
-      "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.10.9",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 5.0.1",
       "Swashbuckle.AspNetCore >= 6.0.2",
-      "Todo.Domain >= 1.0.0"
+      "Todo.domain >= 1.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Pedro Abel\\.nuget\\packages\\": {},
+    "C:\\Users\\USUARIO\\.nuget\\packages\\": {},
     "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Pedro Abel\\Downloads\\TodoApi\\TodoApi\\TodoApi.csproj",
+      "projectUniqueName": "D:\\asp.net core c#\\practica\\pruebasTaller001\\TodoApi\\TodoApi.csproj",
       "projectName": "TodoApi",
-      "projectPath": "F:\\Pedro Abel\\Downloads\\TodoApi\\TodoApi\\TodoApi.csproj",
-      "packagesPath": "C:\\Users\\Pedro Abel\\.nuget\\packages\\",
-      "outputPath": "F:\\Pedro Abel\\Downloads\\TodoApi\\TodoApi\\obj\\",
+      "projectPath": "D:\\asp.net core c#\\practica\\pruebasTaller001\\TodoApi\\TodoApi.csproj",
+      "packagesPath": "C:\\Users\\USUARIO\\.nuget\\packages\\",
+      "outputPath": "D:\\asp.net core c#\\practica\\pruebasTaller001\\TodoApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Pedro Abel\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.2.config",
+        "C:\\Users\\USUARIO\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -7796,17 +7723,14 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "E:\\Program Files (x86)\\DevExpress 19.2\\Components\\System\\Components\\Packages": {},
-        "https://ansofttech.pkgs.visualstudio.com/_packaging/FuncionesAngeluz/nuget/v3/index.json": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://nuget.devexpress.com/kx7jTmdEi7mLnq4xFQlNlA3V1L4ygNYh9kRCv1TprY9qath7i9/api": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "F:\\Pedro Abel\\Downloads\\TodoApi\\Todo.Domain\\Todo.Domain.csproj": {
-              "projectPath": "F:\\Pedro Abel\\Downloads\\TodoApi\\Todo.Domain\\Todo.Domain.csproj"
+            "D:\\asp.net core c#\\practica\\pruebasTaller001\\Todo.domain\\Todo.domain.csproj": {
+              "projectPath": "D:\\asp.net core c#\\practica\\pruebasTaller001\\Todo.domain\\Todo.domain.csproj"
             }
           }
         }
@@ -7839,10 +7763,6 @@
             "target": "Package",
             "version": "[5.0.2, )"
           },
-          "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
-            "target": "Package",
-            "version": "[1.10.9, )"
-          },
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "[5.0.1, )"
@@ -7870,7 +7790,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
       }
     }
   }
