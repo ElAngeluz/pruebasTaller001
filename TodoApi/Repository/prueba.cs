@@ -30,7 +30,7 @@ namespace TodoApi.Repository
         Task<ActionResult<TodoItem>> PostAllAsync(TodoItem todoItem);
 
         Task<IActionResult> DeleteAllAsync(long id);
-        Task<IActionResult> PutIdAsync(long id, TodoItem todoItem);
+        Task<IActionResult> PutIdAsync(TodoItem todoItem);
         (bool Success, object Data) Metodo(string parametro);
     }
     public class Prueba : IPrueba
@@ -71,18 +71,11 @@ namespace TodoApi.Repository
             return todoItem;
         }
 
-        public async Task<IActionResult> PutIdAsync(long id, TodoItem todoItem)
+        public async Task<IActionResult> PutIdAsync(TodoItem todoItem)
         {
-            if (id != todoItem.Id)
-            {
-                var bad = new BadRequestResult();
-                return bad;
-            }
-
-            _context.Entry(todoItem).State = EntityState.Modified;
-
             try
             {
+                _context.Entry(todoItem).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
