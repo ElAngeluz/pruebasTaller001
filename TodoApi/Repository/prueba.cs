@@ -140,18 +140,6 @@ namespace TodoApi.Repository
             }            
             return todoItem; 
         }
-        //public Task<ActionResult<TodoItem>> Metodo(string parametro, long id)
-        //{
-        //    try
-        //    {
-               
-        //    }
-        //    catch (TimeoutException Ex)
-        //    {
-        //        Logger.LogCritical(Ex, "Error inesperado en metodo 1, cuando se hacia la operación x{parametro}", parametro);
-        //        return (false, new ErrorApiResponse());
-        //    }
-        //}
 
     }
 }
