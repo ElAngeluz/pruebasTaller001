@@ -8,8 +8,8 @@ using Todo.domain.soloopera;
 using TodoApi.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
-
+using TodoApi.Controllers;
+using static TodoApi.Controllers.TodoItemsController;
 
 namespace TodoApi.Repository
 {
@@ -22,22 +22,27 @@ namespace TodoApi.Repository
         /// <returns></returns>
         Task<IEnumerable<TodoItem>> GetAllAsync();
         /// <summary>
-        /// Funcion de prueba
+        /// 
         /// </summary>
-        /// <param name="parametro">parametro de entrada</param>
-        
-        Task<ActionResult<TodoItem>> GetIdAsync(long id);
+        /// <param name="id">hfghfghgdh</param>
+        /// <returns></returns>
+        Task<ActionResult<Tuple<bool, TodoItem>>> GetIdAsync(long id);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="todoItem"></param>
+        /// <returns></returns>
         Task<ActionResult<TodoItem>> PostAllAsync(TodoItem todoItem);
 
-        Task<IActionResult> DeleteAllAsync(long id);
+        Task<ActionResult<TodoItem>> DeleteAllAsync(long id);
         Task<IActionResult> PutIdAsync(TodoItem todoItem);
-        (bool Success, object Data) Metodo(string parametro);
     }
     public class Prueba : IPrueba
     {
         private readonly ILogger<Prueba> Logger;
         private readonly TodoContext _context;
-
+        bool t = true;
+        bool f = false;
         public Prueba(ILogger<Prueba> logger, TodoContext context)//constructor 
         {
             Logger = logger;
@@ -57,18 +62,22 @@ namespace TodoApi.Repository
             }
         }
 
-        public async Task<ActionResult<TodoItem>> GetIdAsync(long id)
-        {
-            Logger.LogInformation("Se procede a consultar la tarea {ID}", id);
-            var todoItem = await _context.TodoItems.FindAsync(id);
-
-            if (todoItem == null)
+        public async Task<ActionResult<Tuple<bool,TodoItem>>> GetIdAsync(long id)
+        { 
+            try
             {
-                var not = new NotFoundResult();
-                return not;
+                Logger.LogInformation("Se procede a consultar el id: {ID}", id);
+                var data = await _context.TodoItems.FindAsync(id);
+                var t1 = (saludo: t, destino: data);
+                //var t2 = (saludo: t, destino: data);
+                //Console.WriteLine("{0} {1}", t1.saludo, t1.destino);
+                return data == null ? Tuple.Create(f, data) :Tuple.Create(t1.saludo, t1.destino);
             }
-
-            return todoItem;
+            catch (Exception Ex)
+            {
+                Logger.LogError(Ex, "Se produjo un error en: {Ex}");
+                throw;
+            }
         }
 
         public async Task<IActionResult> PutIdAsync(TodoItem todoItem)
@@ -80,18 +89,17 @@ namespace TodoApi.Repository
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (todoItem.Id == 0)//revisar
+                if (todoItem.Id == 0)
                 {
-                    var not = new NotFoundResult();
-                    return not;
+                    return new NotFoundResult();
                 }
                 else
                 {
+                    Logger.LogInformation("Se produjo una modificación");
                     throw;
                 }
             }
-            var noconten = new NoContentResult();
-            return noconten;
+            return new NoContentResult();
         }
         public async Task<ActionResult<TodoItem>> PostAllAsync(TodoItem todoItem)
         {
@@ -100,44 +108,50 @@ namespace TodoApi.Repository
                 Logger.LogInformation("Se procede a ingresar un Usuario {todoItem}",todoItem);
                 _context.TodoItems.Add(todoItem);
                 await _context.SaveChangesAsync();
-
-                return todoItem;
+                return todoItem; 
             }
             catch (Exception Ex)
             {
-                Logger.LogError("Se produjo un error en: {Ex}", Ex);
+                Logger.LogError(Ex, "Se produjo un error en: {Ex}");
                 throw;
             }
 
         }
 
-        public async Task<IActionResult> DeleteAllAsync(long id)
+        public async Task<ActionResult<TodoItem>> DeleteAllAsync(long id)
         {
-            var todoItem = await _context.TodoItems.FindAsync(id);
-            if (todoItem == null)
-            {
-                var not = new NotFoundResult();
-                return not;
-            }
-
-            _context.TodoItems.Remove(todoItem);
-            await _context.SaveChangesAsync();
-
-            var noconten = new NoContentResult();
-            return noconten;
-        }
-
-        public (bool Success, object Data) Metodo(string parametro)
-        {
+            var _todoItem = await _context.TodoItems.FindAsync(id);
+            var todoItem = new TodoItem();
             try
             {
-                return (true, null);
+                if (_todoItem == null)
+                {
+                    return new NotFoundResult();
+                }
+                _context.Entry(todoItem).State = EntityState.Modified;
+                //_context.TodoItems.Remove(todoItem.Name);
+                await _context.SaveChangesAsync();
+
             }
-            catch (TimeoutException Ex)
+            catch (Exception Ex)
             {
-                Logger.LogCritical(Ex, "Error inesperado en metodo 1, cuando se hacia la operación x{parametro}", parametro);
-                return (false, null);
-            }
+                Logger.LogError(Ex,"Se produjo un error en: {Ex}");
+                throw;
+            }            
+            return todoItem; 
         }
+        //public Task<ActionResult<TodoItem>> Metodo(string parametro, long id)
+        //{
+        //    try
+        //    {
+               
+        //    }
+        //    catch (TimeoutException Ex)
+        //    {
+        //        Logger.LogCritical(Ex, "Error inesperado en metodo 1, cuando se hacia la operación x{parametro}", parametro);
+        //        return (false, new ErrorApiResponse());
+        //    }
+        //}
+
     }
 }

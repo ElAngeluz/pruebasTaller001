@@ -9,6 +9,7 @@ using TodoApi.Models;
 using Todo.domain.soloopera;
 using TodoApi.Repository;
 using Microsoft.Extensions.Logging;
+using Nest;
 
 namespace TodoApi.Controllers
 {
@@ -19,13 +20,10 @@ namespace TodoApi.Controllers
     {
         private readonly TodoContext _context;
         private readonly IPrueba Prueba;
-
         public TodoItemsController(TodoContext context, IPrueba prueba)
         {
-            //var todo = new TodoItem();
-            //Console.WriteLine(todo.suma(23));
             _context = context;
-            Prueba = prueba ;
+            Prueba = prueba;
         }
 
         // GET: api/TodoItems
@@ -34,39 +32,35 @@ namespace TodoApi.Controllers
 
         // GET: api/TodoItems/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<TodoItem>> GetTodoItem(long id) => Ok(await Prueba.GetIdAsync(id));
-
+        public async Task<ActionResult<Tuple<bool, TodoItem>>> GetTodoItem(long id) => (await Prueba.GetIdAsync(id));
+        
         // PUT: api/TodoItems/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
+        [HttpPut]
         public async Task<IActionResult> PutTodoItem(TodoItem todoItem) => Ok(await Prueba.PutIdAsync(todoItem));
 
         // POST: api/TodoItems
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         // POST: api/TodoItems
         [HttpPost]
-        public async Task<ActionResult<TodoItem>> PostTodoItem(TodoItem todoItem) => Ok(await Prueba.PostAllAsync(todoItem));
+        public async Task<ActionResult<TodoItem>> PostTodoItem(TodoItem todoItem) => (await Prueba.PostAllAsync(todoItem));
 
         // DELETE: api/TodoItems/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTodoItem(long id) => Ok(await Prueba.DeleteAllAsync(id));
+        public async Task<ActionResult<TodoItem>> DeleteTodoItem(long id) => Ok(await Prueba.DeleteAllAsync(id));
+        
+        
+        public class ErrorApiResponse
+        {
+            public string Mensaje { get; set; }
+            public string ErrorHttp { get; set; }
+        }
+        public class SuccessApiResponse
+        {
+            public dynamic Link { get; set; }
+            public object Object { get; set; }
+        }
         
 
-        private bool TodoItemExists(long id)
-        {
-
-            (bool Success, object Data) = Prueba.Metodo("sa");
-
-            //if (Success)
-            //{
-            //    return Ok(Data);
-            //}
-            //else
-            //{
-            //    return BadRequest(Data);
-            //}
-
-            return _context.TodoItems.Any(e => e.Id == id);
-        }
     }
 }
