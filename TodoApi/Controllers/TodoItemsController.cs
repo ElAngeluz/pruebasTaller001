@@ -35,11 +35,6 @@ namespace TodoApi.Controllers
         {
             (bool Success, TodoItem Data) = await Prueba.GetIdAsync(id);
 
-            if (!Success)
-            {
-                Logger.LogError("No se ha podido encontrar el item");
-            }
-
             return Success
                 ? Ok(Data)
                 : NotFound();
