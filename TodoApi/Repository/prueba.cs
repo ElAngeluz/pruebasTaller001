@@ -24,11 +24,11 @@ namespace TodoApi.Repository
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="id">hfghfghgdh</param>
-        /// <returns></returns>
-        Task<ActionResult<Tuple<bool, TodoItem>>> GetIdAsync(long id);
+        /// <param name="id">Identificador de registro</param>
+        /// <returns></returns>        
+        Task<(bool Success, TodoItem Data)> GetIdAsync(long id);
+
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="todoItem"></param>
         /// <returns></returns>
@@ -36,6 +36,7 @@ namespace TodoApi.Repository
 
         Task<ActionResult<TodoItem>> DeleteAllAsync(long id);
         Task<IActionResult> PutIdAsync(TodoItem todoItem);
+        
     }
     public class Prueba : IPrueba
     {
@@ -62,21 +63,21 @@ namespace TodoApi.Repository
             }
         }
 
-        public async Task<ActionResult<Tuple<bool,TodoItem>>> GetIdAsync(long id)
+        public async Task<(bool Success, TodoItem Data)> GetIdAsync(long id)
         { 
             try
             {
                 Logger.LogInformation("Se procede a consultar el id: {ID}", id);
-                var data = await _context.TodoItems.FindAsync(id);
-                var t1 = (saludo: t, destino: data);
-                //var t2 = (saludo: t, destino: data);
-                //Console.WriteLine("{0} {1}", t1.saludo, t1.destino);
-                return data == null ? Tuple.Create(f, data) :Tuple.Create(t1.saludo, t1.destino);
+                TodoItem data = await _context.TodoItems.FindAsync(id);
+                return data == null 
+                    ? (false, null) 
+                    : (true, data);
             }
+            catch (ArgumentException Ex){ return (false, null); }
             catch (Exception Ex)
             {
                 Logger.LogError(Ex, "Se produjo un error en: {Ex}");
-                throw;
+                return (false, null);
             }
         }
 
