@@ -68,7 +68,7 @@ namespace TodoApi.Repository
             {
                 Logger.LogInformation("Se procede a consultar el id: {ID}", id);
                 var data = await _context.TodoItems.FindAsync(id);
-                var t1 = (saludo: t, destino: data);
+                var t1 = (saludo: t, destino: data);//verificar
                 //var t2 = (saludo: t, destino: data);
                 //Console.WriteLine("{0} {1}", t1.saludo, t1.destino);
                 return data == null ? Tuple.Create(f, data) :Tuple.Create(t1.saludo, t1.destino);
@@ -84,11 +84,12 @@ namespace TodoApi.Repository
         {
             try
             {
-                _context.Entry(todoItem).State = EntityState.Modified;
+                _context.Entry(todoItem).State = EntityState.Modified;//PREGUNTAR
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
+                //return todoItem.Id == 0 ? new NotFoundResult(): Logger.LogInformation("Se produjo una modificación");
                 if (todoItem.Id == 0)
                 {
                     return new NotFoundResult();
@@ -120,11 +121,11 @@ namespace TodoApi.Repository
 
         public async Task<ActionResult<TodoItem>> DeleteAllAsync(long id)
         {
-            var _todoItem = await _context.TodoItems.FindAsync(id);
-            var todoItem = new TodoItem();
+            var todoItem = await _context.TodoItems.FindAsync(id);
+            //var todoItem = new TodoItem();
             try
             {
-                if (_todoItem == null)
+                if (todoItem == null)
                 {
                     return new NotFoundResult();
                 }
