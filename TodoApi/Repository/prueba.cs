@@ -26,7 +26,7 @@ namespace TodoApi.Repository
         /// </summary>
         /// <param name="id">Identificador de registro</param>
         /// <returns></returns>        
-        Task<(bool Success, TodoItem Data)> GetIdAsync(long id);
+        Task<(bool Success, object Data)> GetIdAsync(long id);
 
         /// <summary>
         /// </summary>
@@ -42,8 +42,7 @@ namespace TodoApi.Repository
     {
         private readonly ILogger<Prueba> Logger;
         private readonly TodoContext _context;
-        bool t = true;
-        bool f = false;
+       
         public Prueba(ILogger<Prueba> logger, TodoContext context)//constructor 
         {
             Logger = logger;
@@ -63,7 +62,7 @@ namespace TodoApi.Repository
             }
         }
 
-        public async Task<(bool Success, TodoItem Data)> GetIdAsync(long id)
+        public async Task<(bool Success, object Data)> GetIdAsync(long id)
         { 
             try
             {
@@ -71,7 +70,7 @@ namespace TodoApi.Repository
                 TodoItem data = await _context.TodoItems.FindAsync(id);
                 return data == null 
                     ? (false, null) 
-                    : (true, data);
+                    : (true, new responsedet() { Error = false, Data = data });
             }
             catch (ArgumentException Ex){ return (false, null); }
             catch (Exception Ex)

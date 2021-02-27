@@ -33,12 +33,18 @@ namespace TodoApi.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Tuple<bool, TodoItem>>> GetTodoItem(long id)
         {
-            (bool Success, TodoItem Data) = await Prueba.GetIdAsync(id);
+            var (Success, Data) = await Prueba.GetIdAsync(id);
 
             return Success
                 ? Ok(Data)
                 : NotFound();
-                
+
+        }
+
+         public class responsedet
+        {
+            public bool Error { get; set; }
+            public object Data { get; set; }
         }
 
         // PUT: api/TodoItems/5
