@@ -32,7 +32,7 @@ namespace TodoApi.Repository
         Task<ActionResult<TodoItem>> PostAllAsync(TodoItem todoItem);
 
         Task<ActionResult<TodoItem>> DeleteAllAsync(long id);
-        Task<IActionResult> PutIdAsync(TodoItem todoItem);
+        Task<(bool Success, object Data)> PutIdAsync(TodoItem todoItem);
 
     }
     public class PruebaRepository : IPrueba
@@ -80,32 +80,39 @@ namespace TodoApi.Repository
             }
         }
 
-        public async Task<IActionResult> PutIdAsync(TodoItem todoItem)
+        public async Task<(bool Success, object Data)> PutIdAsync(TodoItem data)
         {
             try
             {
-                if (todoItem is null)
+                if (data is null)
                 {
-                    return new BadRequestResult(); //400
+                    Logger.LogError("Se produjo un error en {metodo}", nameof(PutIdAsync));
+                    return (false, new Responsedet() { Error = false, Data = "El objeto enviado no es valido" }); 
                 }
-                _context.Entry(todoItem).State = EntityState.Modified;
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException ex)
-            {
-                Logger.LogError(ex, "");
-                if (todoItem.Id == 0)
+                else if (data.Id == 0)
                 {
-                    return new NotFoundResult(); //404
+                    Logger.LogError("Se produjo un error de id=0");
+                    return (false, new Responsedet() { Error = false, Data = "el id ingresado no es valido" });
                 }
                 else
                 {
+                    _context.Entry(data).State = EntityState.Modified;
+                    await _context.SaveChangesAsync();
                     Logger.LogInformation("Se produjo una modificación");
-                    throw;
+                    return (true, data);
                 }
             }
-            catch (Exception Ex) { Logger.LogCritical(Ex, ""); }
-            return new NoContentResult(); //204
+            catch (DbUpdateConcurrencyException ex)
+            {
+                Logger.LogError(ex, "Se produjo un error en {metodo}", nameof(PutIdAsync));
+                return (false, new Responsedet() { Error = false, Data = "No podemos realizar la actualización" });
+                
+            }
+            catch (Exception Ex)
+            {
+                Logger.LogCritical(Ex, "Se produjo un error");
+                return (false, new Responsedet() { Error = false, Data = "Se produjo un error general." });
+            }
         }
 
         public async Task<ActionResult<TodoItem>> PostAllAsync(TodoItem todoItem)

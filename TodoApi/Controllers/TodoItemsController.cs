@@ -47,7 +47,7 @@ namespace TodoApi.Controllers
 
         }
 
-         public class Responsedet
+        public class Responsedet
         {
             public bool Error { get; set; }
             public object Data { get; set; }
@@ -56,7 +56,19 @@ namespace TodoApi.Controllers
         // PUT: api/TodoItems/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut]
-        public async Task<IActionResult> PutTodoItem(TodoItem todoItem) => Ok(await Prueba.PutIdAsync(todoItem)); 
+        public async Task<ActionResult> PutTodoItem(TodoItem data) 
+        {
+            var (Success, Data) = await Prueba.PutIdAsync(data);
+
+            if (Data is TodoItem todo)
+            {
+                todo.IsComplete = false;
+            }
+
+            return Success
+                ? Ok(Data)
+                : BadRequest(Data);
+        }            
 
         // POST: api/TodoItems
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
