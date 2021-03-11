@@ -28,21 +28,26 @@ namespace TodoApi.Controllers
 
         // GET: api/TodoItems
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TodoItem>>> GetTodoItems() => Ok(await Prueba.GetAllAsync());
+        public async Task<ActionResult> GetTodoItems() => Ok(await Prueba.GetAllAsync());
 
         // GET: api/TodoItems/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Tuple<bool, TodoItem>>> GetTodoItem(long id)
+        public async Task<ActionResult> GetTodoItem(long id)
         {
-            var (Success, Data) = await Prueba.GetIdAsync(id);
+            var (Success, Data) = await Prueba.GetIdf(id);
+
+            if (Data is TodoItem todo)
+            {
+                todo.IsComplete = false;
+            }
 
             return Success
                 ? Ok(Data)
-                : NotFound();
+                : BadRequest(Data);
 
         }
 
-         public class responsedet
+         public class Responsedet
         {
             public bool Error { get; set; }
             public object Data { get; set; }
@@ -51,7 +56,7 @@ namespace TodoApi.Controllers
         // PUT: api/TodoItems/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut]
-        public async Task<IActionResult> PutTodoItem(TodoItem todoItem) => Ok(await Prueba.PutIdAsync(todoItem));
+        public async Task<IActionResult> PutTodoItem(TodoItem todoItem) => Ok(await Prueba.PutIdAsync(todoItem)); 
 
         // POST: api/TodoItems
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
