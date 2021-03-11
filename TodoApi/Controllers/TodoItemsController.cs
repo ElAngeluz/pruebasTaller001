@@ -33,7 +33,7 @@ namespace TodoApi.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult> GetTodoItem(long id)
         {
-            var (Success, Data) = await Prueba.GetIdAsync(id);
+            var (Success, Data) = await Prueba.GetIdf(id);
 
             if (Data is TodoItem todo)
             {

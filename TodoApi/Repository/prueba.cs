@@ -23,7 +23,7 @@ namespace TodoApi.Repository
         /// </summary>
         /// <param name="id">Identificador de registro</param>
         /// <returns></returns>        
-        Task<(bool Success, object Data)> GetIdAsync(long id);
+        Task<(bool Success, object Data)> GetIdf(long id);
 
         /// <summary>
         /// </summary>
@@ -59,21 +59,24 @@ namespace TodoApi.Repository
             }
         }
 
-        public async Task<(bool Success, object Data)> GetIdAsync(long id)
+        public async Task<(bool Success, object Data)> GetIdf(long idt)
         {
             try
             {
-                Logger.LogInformation("Se procede a consultar el id: {ID}", id);
-                TodoItem data = await _context.TodoItems.FindAsync(id);
+                Logger.LogInformation("Se procede a consultar el id: {ID}", idt);
+                TodoItem data = await _context.TodoItems.FindAsync(idt);
                 return data == null
                     ? (true, data)
                     : (false, new Responsedet() { Error = false, Data = data });
             }
-            catch (ArgumentException Ex) { return (false, null); }
+            catch (ArgumentException Ex) {
+                Logger.LogError(Ex, "Se produjo un error en {metodo}", nameof(GetIdf));
+                return (false, new Responsedet() { Error = false, Data = "El id es nulo"}); 
+            }
             catch (Exception Ex)
             {
-                Logger.LogError(Ex, "Se produjo un error en: {Ex}");
-                return (false, null);
+                Logger.LogCritical(Ex, "Se produjo un error en: {Ex}");
+                return (false, new Responsedet() { Error = false, Data = "Se produjo un error general." });
             }
         }
 
