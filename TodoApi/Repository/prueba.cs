@@ -75,7 +75,7 @@ namespace TodoApi.Repository
             }
             catch (Exception Ex)
             {
-                Logger.LogCritical(Ex, "Se produjo un error en: {Ex}");
+                Logger.LogCritical(Ex, "Se produjo un error");
                 return (false, new Responsedet() { Error = false, Data = "Se produjo un error general." });
             }
         }
