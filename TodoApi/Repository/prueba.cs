@@ -2,13 +2,10 @@
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Todo.domain.soloopera;
 using TodoApi.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using TodoApi.Controllers;
 using static TodoApi.Controllers.TodoItemsController;
 
 namespace TodoApi.Repository
@@ -36,14 +33,14 @@ namespace TodoApi.Repository
 
         Task<ActionResult<TodoItem>> DeleteAllAsync(long id);
         Task<IActionResult> PutIdAsync(TodoItem todoItem);
-        
+
     }
-    public class Prueba : IPrueba
+    public class PruebaRepository : IPrueba
     {
-        private readonly ILogger<Prueba> Logger;
+        private readonly ILogger<PruebaRepository> Logger;
         private readonly TodoContext _context;
-       
-        public Prueba(ILogger<Prueba> logger, TodoContext context)//constructor 
+
+        public PruebaRepository(ILogger<PruebaRepository> logger, TodoContext context)//constructor 
         {
             Logger = logger;
             _context = context;
@@ -63,16 +60,16 @@ namespace TodoApi.Repository
         }
 
         public async Task<(bool Success, object Data)> GetIdAsync(long id)
-        { 
+        {
             try
             {
                 Logger.LogInformation("Se procede a consultar el id: {ID}", id);
                 TodoItem data = await _context.TodoItems.FindAsync(id);
-                return data == null 
-                    ? (false, null) 
-                    : (true, new responsedet() { Error = false, Data = data });
+                return data == null
+                    ? (true, data)
+                    : (false, new Responsedet() { Error = false, Data = data });
             }
-            catch (ArgumentException Ex){ return (false, null); }
+            catch (ArgumentException Ex) { return (false, null); }
             catch (Exception Ex)
             {
                 Logger.LogError(Ex, "Se produjo un error en: {Ex}");
@@ -84,14 +81,19 @@ namespace TodoApi.Repository
         {
             try
             {
+                if (todoItem is null)
+                {
+                    return new BadRequestResult(); //400
+                }
                 _context.Entry(todoItem).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DbUpdateConcurrencyException ex)
             {
+                Logger.LogError(ex, "");
                 if (todoItem.Id == 0)
                 {
-                    return new NotFoundResult();
+                    return new NotFoundResult(); //404
                 }
                 else
                 {
@@ -99,16 +101,18 @@ namespace TodoApi.Repository
                     throw;
                 }
             }
-            return new NoContentResult();
+            catch (Exception Ex) { Logger.LogCritical(Ex, ""); }
+            return new NoContentResult(); //204
         }
+
         public async Task<ActionResult<TodoItem>> PostAllAsync(TodoItem todoItem)
         {
             try
             {
-                Logger.LogInformation("Se procede a ingresar un Usuario {todoItem}",todoItem);
+                Logger.LogInformation("Se procede a ingresar un Usuario {todoItem}", todoItem);
                 _context.TodoItems.Add(todoItem);
                 await _context.SaveChangesAsync();
-                return todoItem; 
+                return todoItem;
             }
             catch (Exception Ex)
             {
@@ -135,10 +139,10 @@ namespace TodoApi.Repository
             }
             catch (Exception Ex)
             {
-                Logger.LogError(Ex,"Se produjo un error en: {Ex}");
+                Logger.LogError(Ex, "Se produjo un error en: {Ex}");
                 throw;
-            }            
-            return todoItem; 
+            }
+            return todoItem;
         }
 
     }

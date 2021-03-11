@@ -74,7 +74,7 @@ namespace TodoApi
                 });
                 c.TagActionsBy(p => p.HttpMethod);
             });
-            _ = services.AddScoped<IPrueba, Prueba>();
+            _ = services.AddScoped<IPrueba, PruebaRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
