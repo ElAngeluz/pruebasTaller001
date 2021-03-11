@@ -61,8 +61,18 @@ namespace TodoApi.Controllers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         // POST: api/TodoItems
         [HttpPost]
-        public async Task<ActionResult<TodoItem>> PostTodoItem(TodoItem todoItem) => (await Prueba.PostAllAsync(todoItem));
-
+        //public async Task<ActionResult> PostTodoItem(TodoItem todoItem) => Ok(await Prueba.PostAllAsync(todoItem));
+        public async Task<ActionResult> PostTodoItem(TodoItem todoItem)
+        {
+            var (Succes, Data) = await Prueba.PostAllAsync(todoItem);
+            if(Data is TodoItem todo)
+            {
+                todo.IsComplete = false;
+            }
+            return Succes
+                ? Ok(Data)
+                : BadRequest(Data);
+        }
         // DELETE: api/TodoItems/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<TodoItem>> DeleteTodoItem(long id) => Ok(await Prueba.DeleteAllAsync(id));

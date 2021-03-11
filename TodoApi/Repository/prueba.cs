@@ -29,7 +29,7 @@ namespace TodoApi.Repository
         /// </summary>
         /// <param name="todoItem"></param>
         /// <returns></returns>
-        Task<ActionResult<TodoItem>> PostAllAsync(TodoItem todoItem);
+        Task<(bool Success,object Data)> PostAllAsync(TodoItem todoItem);
 
         Task<ActionResult<TodoItem>> DeleteAllAsync(long id);
         Task<IActionResult> PutIdAsync(TodoItem todoItem);
@@ -108,19 +108,20 @@ namespace TodoApi.Repository
             return new NoContentResult(); //204
         }
 
-        public async Task<ActionResult<TodoItem>> PostAllAsync(TodoItem todoItem)
+        public async Task<(bool Success, object Data)> PostAllAsync(TodoItem todoItem)
         {
             try
             {
                 Logger.LogInformation("Se procede a ingresar un Usuario {todoItem}", todoItem);
-                _context.TodoItems.Add(todoItem);
+                await _context.TodoItems.AddAsync(todoItem);
                 await _context.SaveChangesAsync();
-                return todoItem;
+                return (true, todoItem);
+ 
             }
             catch (Exception Ex)
             {
                 Logger.LogError(Ex, "Se produjo un error en: {Ex}");
-                throw;
+                return (false, new Responsedet() { Error = false, Data = "Se produjo un error" });
             }
 
         }
