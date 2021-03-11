@@ -29,8 +29,8 @@ namespace TodoApi
 
         public  void ConfigureServices(IServiceCollection services)
         {
-            
-            services.AddDbContext<TodoContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("Connectiontext")));
+
+            _ = services.AddDbContext<TodoContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("Connectiontext")));
 
             services.AddControllers();
             
@@ -81,13 +81,13 @@ namespace TodoApi
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                _ = app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
-            app.UseRouting();
-            app.UseSwagger();
-            app.UseSwagger(c =>
+            _ = app.UseHttpsRedirection();
+            _ = app.UseRouting();
+            _ = app.UseSwagger();
+            _ = app.UseSwagger(c =>
             {
                 c.SerializeAsV2 = true;
             });
@@ -99,9 +99,9 @@ namespace TodoApi
                 c.DefaultModelRendering(ModelRendering.Example);
             });
 
-            app.UseAuthorization();
+            _ = app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
+            _ = app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });

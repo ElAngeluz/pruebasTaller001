@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using TodoApi.Models;
 using Todo.domain.soloopera;
 using TodoApi.Repository;
 using Microsoft.Extensions.Logging;
+using Nest;
 
 namespace TodoApi.Controllers
 {
@@ -16,13 +20,10 @@ namespace TodoApi.Controllers
     {
         private readonly TodoContext _context;
         private readonly IPrueba Prueba;
-        private readonly ILogger<TodoItemsController> Logger;
-
-        public TodoItemsController(TodoContext context, IPrueba prueba, ILogger<TodoItemsController> logger)
+        public TodoItemsController(TodoContext context, IPrueba prueba)
         {
             _context = context;
             Prueba = prueba;
-            Logger = logger;
         }
 
         // GET: api/TodoItems
@@ -46,7 +47,7 @@ namespace TodoApi.Controllers
 
         }
 
-         public class Responsedet
+        public class Responsedet
         {
             public bool Error { get; set; }
             public object Data { get; set; }
@@ -55,7 +56,19 @@ namespace TodoApi.Controllers
         // PUT: api/TodoItems/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut]
-        public async Task<IActionResult> PutTodoItem(TodoItem todoItem) => Ok(await Prueba.PutIdAsync(todoItem)); 
+        public async Task<ActionResult> PutTodoItem(TodoItem data) 
+        {
+            var (Success, Data) = await Prueba.PutIdAsync(data);
+
+            if (Data is TodoItem todo)
+            {
+                todo.IsComplete = false;
+            }
+
+            return Success
+                ? Ok(Data)
+                : BadRequest(Data);
+        }            
 
         // POST: api/TodoItems
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
