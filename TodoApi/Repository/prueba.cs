@@ -17,7 +17,7 @@ namespace TodoApi.Repository
         /// Funcion que consulta todas las tareas 
         /// </summary>
         /// <returns></returns>
-        Task<IEnumerable<TodoItem>> GetAllAsync();
+        Task<(bool Success, object Data)> GetAllAsync();
         /// <summary>
         /// 
         /// </summary>
@@ -51,16 +51,25 @@ namespace TodoApi.Repository
             _context = context;
         }
 
-        public async Task<IEnumerable<TodoItem>> GetAllAsync()
+        public async Task<(bool Success, object Data)> GetAllAsync()
         {
             try
             {
-                return await _context.TodoItems.ToListAsync();
+                Logger.LogInformation("Se procede a realizar una consulta general");
+                object data = await _context.TodoItems.ToListAsync();
+                return data != null
+                    ? (true, data)
+                    : (false, new Responsedet() { Error = false, Data = data });
+            }
+            catch (ArgumentException Ex)
+            {
+                Logger.LogError(Ex, "Se produjo un error en {metodo}", nameof(GetAllAsync));
+                return (false, new Responsedet() { Error = false, Data = "No hay información" });
             }
             catch (Exception Ex)
             {
-                Logger.LogError("Se produjo un error en: {Ex}", Ex);
-                throw;
+                Logger.LogCritical(Ex, "Se produjo un error");
+                return (false, new Responsedet() { Error = false, Data = "Se produjo un error general." });
             }
         }
 
@@ -70,7 +79,7 @@ namespace TodoApi.Repository
             {
                 Logger.LogInformation("Se procede a consultar el id: {ID}", idt);
                 TodoItem data = await _context.TodoItems.FindAsync(idt);
-                return data == null
+                return data != null
                     ? (true, data)
                     : (false, new Responsedet() { Error = false, Data = data });
             }
@@ -128,7 +137,6 @@ namespace TodoApi.Repository
                 await _context.TodoItems.AddAsync(todoItem);
                 await _context.SaveChangesAsync();
                 return (true, todoItem);
- 
             }
             catch (Exception Ex)
             {

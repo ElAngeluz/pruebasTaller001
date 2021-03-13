@@ -28,7 +28,15 @@ namespace TodoApi.Controllers
 
         // GET: api/TodoItems
         [HttpGet]
-        public async Task<ActionResult> GetTodoItems() => Ok(await Prueba.GetAllAsync());
+        public async Task<ActionResult> GetTodoItems() 
+         {
+            var(Success, Data) = await Prueba.GetAllAsync();
+
+            return Success
+                ? Ok(Data)
+                : BadRequest(Data);
+         }
+
 
         // GET: api/TodoItems/5
         [HttpGet("{id}")]
