@@ -88,9 +88,20 @@ namespace TodoApi.Controllers
         }
         // DELETE: api/TodoItems/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<TodoItem>> DeleteTodoItem(long id) => Ok(await Prueba.DeleteAllAsync(id));
-        
-        
+        //public async Task<ActionResult<TodoItem>> DeleteTodoItem(long id) => Ok(await Prueba.DeleteAllAsync(id));
+        public async Task<ActionResult> DeleteTodoItem(long id)
+        {
+            var (Succes, Data) = await Prueba.DeleteAllAsync(id);
+            if (Data is TodoItem todo)
+            {
+                todo.IsComplete = false;
+            }
+            return Succes
+                ? Ok(Data)
+                : BadRequest(Data);
+        }
+
+
         public class ErrorApiResponse
         {
             public string Mensaje { get; set; }

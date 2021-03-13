@@ -31,7 +31,12 @@ namespace TodoApi.Repository
         /// <returns></returns>
         Task<(bool Success,object Data)> PostAllAsync(TodoItem todoItem);
 
-        Task<ActionResult<TodoItem>> DeleteAllAsync(long id);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id">Identificador para Eliminacion de registro</param>
+        /// <returns></returns>
+        Task<(bool Success, object Data)> DeleteAllAsync(long id);
         Task<(bool Success, object Data)> PutIdAsync(TodoItem todoItem);
 
     }
@@ -133,27 +138,38 @@ namespace TodoApi.Repository
 
         }
 
-        public async Task<ActionResult<TodoItem>> DeleteAllAsync(long id)
+        public async Task<(bool Success, object Data)> DeleteAllAsync(long id)
         {
-            var todoItem = await _context.TodoItems.FindAsync(id);
-            //var todoItem = new TodoItem();
             try
             {
-                if (todoItem == null)
+                Logger.LogInformation("Se procede a eliminar el id: {ID}",id);
+                TodoItem data = await _context.TodoItems.FindAsync(id);
+                if (data == null)
                 {
-                    return new NotFoundResult();
+                    Logger.LogError("Se produjo un error en {metodo}", nameof(DeleteAllAsync));
+                    return (false, new Responsedet() { Error = false, Data = data });
+                    
                 }
-                _context.Entry(todoItem).State = EntityState.Modified;
-                //_context.TodoItems.Remove(todoItem.Name);
-                await _context.SaveChangesAsync();
-
+                else
+                {
+                    Logger.LogInformation("Se elimino el id correctamente: {ID}", id);
+                    _context.Entry(data).State = EntityState.Modified;
+                    await _context.SaveChangesAsync();
+                    return (true, data);
+                }
+                
+            }
+            catch (ArgumentException Ex)
+            {
+                Logger.LogError(Ex, "Se produjo un error en {metodo}", nameof(DeleteAllAsync));
+                return (false, new Responsedet() { Error = false, Data = "El id es nulo" });
             }
             catch (Exception Ex)
             {
-                Logger.LogError(Ex, "Se produjo un error en: {Ex}");
-                throw;
+                Logger.LogCritical(Ex, "Se produjo un error");
+                return (false, new Responsedet() { Error = false, Data = "Se produjo un error general." });
             }
-            return todoItem;
+        
         }
 
     }
