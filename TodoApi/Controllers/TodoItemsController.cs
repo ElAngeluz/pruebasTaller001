@@ -100,10 +100,7 @@ namespace TodoApi.Controllers
         public async Task<ActionResult> DeleteTodoItem(long id)
         {
             var (Succes, Data) = await Prueba.DeleteAllAsync(id);
-            if (Data is TodoItem todo)
-            {
-                todo.IsComplete = false;
-            }
+            
             return Succes
                 ? Ok(Data)
                 : BadRequest(Data);

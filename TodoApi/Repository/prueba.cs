@@ -156,11 +156,11 @@ namespace TodoApi.Repository
                 {
                     Logger.LogError("Se produjo un error en {metodo}", nameof(DeleteAllAsync));
                     return (false, new Responsedet() { Error = false, Data = data });
-                    
                 }
                 else
                 {
                     Logger.LogInformation("Se elimino el id correctamente: {ID}", id);
+                    data.IsComplete = false;
                     _context.Entry(data).State = EntityState.Modified;
                     await _context.SaveChangesAsync();
                     return (true, data);
